@@ -1,6 +1,7 @@
 from typing import Callable
 
 
+# replace for class or function
 def replace(replace_obj, do: bool = True):
 
     def handle_obj(obj):
