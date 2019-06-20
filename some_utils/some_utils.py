@@ -1,17 +1,17 @@
 from typing import Callable
 
 
-def replace(replace_func: Callable, replace: bool = True):
+def replace(replace_obj, do: bool = True):
 
-    def handle_func(func: Callable):
+    def handle_obj(obj):
         def handle_args(*args, **kwargs):
-            if replace:
-                res = replace_func(*args, **kwargs)
+            if do:
+                res = replace_obj(*args, **kwargs)
             else:
-                res = func(*args, **kwargs)
+                res = obj(*args, **kwargs)
             return res
         return handle_args
-    return handle_func
+    return handle_obj
 
 
 def retry(count: int = 3, stop_retry_func: Callable[[Exception], bool] = None):
